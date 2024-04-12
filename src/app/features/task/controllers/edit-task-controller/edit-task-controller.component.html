@@ -1,1 +1,12 @@
-<p>edit-task-controller works!</p>
+<div class="flex items-center gap-2 mb-6">
+    <button mat-icon-button
+            (click)="back()">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1 class="font-medium text-sm text-gray-900">Edit list</h1>
+</div>
+<mat-card>
+    <mat-card-content>
+        <app-edit-task-form></app-edit-task-form>
+    </mat-card-content>
+</mat-card>

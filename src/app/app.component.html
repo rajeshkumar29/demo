@@ -1,7 +1,11 @@
-<ul>
-    <li><a routerLink="/task/list">List task</a></li>
-    <li><a [routerLink]="['/task/add']">Add task</a></li>
-    <li><a [routerLink]="['/task/edit']">Edit task</a></li>
-</ul>
-
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+    <h1>Organic Media</h1>
+    <div class="flex-1"></div>
+    <a routerLink="/task/list"
+       mat-flat-button
+       type="button"
+       class="text-sm text-gray-50">Tasks</a>
+</mat-toolbar>
+<div class="container mx-auto">
+    <router-outlet></router-outlet>
+</div>

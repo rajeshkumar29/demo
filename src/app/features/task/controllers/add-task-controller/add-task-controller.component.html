@@ -1,1 +1,12 @@
-<p>add-task-controller works!</p>
+<div class="flex items-center gap-2 mb-6">
+    <button mat-icon-button
+            (click)="back()">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1 class="font-medium text-sm text-gray-900">Add task</h1>
+</div>
+<mat-card>
+    <mat-card-content>
+        <app-add-task-form></app-add-task-form>
+    </mat-card-content>
+</mat-card>
