@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TaskModel } from '../../../../models';
 
 @Component({
   selector: 'app-view-task',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styles: ':host {@apply block w-[50vw]}',
 })
 export class ViewTaskComponent {
-
+  @Input() data?: TaskModel | null = null;
+  @Output() back = new EventEmitter();
 }

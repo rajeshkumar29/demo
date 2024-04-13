@@ -6,10 +6,15 @@
         <mat-icon>add</mat-icon>
         Add task</a>
 </div>
-<div class="flex">
+<div class="flex gap-2">
     <mat-card class="flex-1">
         <mat-card-content>
-            <app-list-task-table [data]="data"></app-list-task-table>
+            <app-list-task-table [deleteError]="deleteError$ | async"
+                                 [isDeletePending]="isDeletePending$ | async"
+                                 [data]="data$ | async"
+                                 [isDataPending]="isFetchListPending$ | async"
+                                 [dataError]="fetchListError$ | async"
+                                 (delete)="delete($event)"></app-list-task-table>
         </mat-card-content>
     </mat-card>
     <router-outlet name="aside"></router-outlet>

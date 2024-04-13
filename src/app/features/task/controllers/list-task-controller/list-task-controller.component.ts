@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import * as fromStore from "../../store";
 
 @Component({
   selector: 'app-list-task-controller',
@@ -6,17 +9,17 @@ import { Component } from '@angular/core';
   styles: ':host {@apply block my-6}',
 })
 export class ListTaskControllerComponent {
-  data = [{
-    id: '123',
-    title: 'first task',
-    description: 'some descirption',
-    dueDate: '2024/04/12',
-    status: 'Open',
-  }, {
-    id: '124',
-    title: 'second task',
-    description: 'some more descirption',
-    dueDate: '2024/04/12',
-    status: 'Close',
-  }];
+  data$ = this.store.select(fromStore.selectTaskList);
+  isFetchListPending$ = this.store.select(fromStore.selectIsFetchListPending);
+  fetchListError$ = this.store.select(fromStore.selectFetchListError);
+  isDeletePending$ = this.store.select(fromStore.selectIsAddPending);
+  deleteError$ = this.store.select(fromStore.selectDeleteError);
+
+  constructor(private store: Store) {
+    this.store.dispatch(fromStore.FetchTaskListBegin());
+  }
+
+  delete(id: string) {
+    this.store.dispatch(fromStore.DeleteTaskBegin({ id }));
+  }
 }

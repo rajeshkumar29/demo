@@ -24,7 +24,8 @@
             <mat-form-field>
                 <mat-label>Status</mat-label>
                 <select matNativeControl
-                        required>
+                        required
+                        formControlName="status">
                     <option value="Open">Open</option>
                     <option value="Pending">Pending</option>
                     <option value="On hold">On hold</option>
@@ -50,6 +51,7 @@
     <div class="flex items-center justify-between">
         <button mat-flat-button
                 color="accent"
-                type="submit">Add</button>
+                type="submit"
+                [disabled]="isPending">Update</button>
     </div>
 </form>

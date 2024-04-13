@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-list-task-table',
@@ -7,6 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class ListTaskTableComponent {
   @Input() data: any;
+  @Input() isDataPending: boolean | null = false;
+  @Input() dataError: string | null = '';
+  @Input() isDeletePending: boolean | null = false;
+  @Input() deleteError: string | null = '';
+  @Output() delete = new EventEmitter();
 
   columns = ['title', 'description', 'status', 'dueDate', 'options'];
 }

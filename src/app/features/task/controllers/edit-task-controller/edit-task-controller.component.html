@@ -7,6 +7,9 @@
 </div>
 <mat-card>
     <mat-card-content>
-        <app-edit-task-form></app-edit-task-form>
+        <app-edit-task-form [data]="data$ | async"
+                            [isPending]="isPending$ | async"
+                            [error]="error$ | async"
+                            (submitForm)="updateTask($event)"></app-edit-task-form>
     </mat-card-content>
 </mat-card>

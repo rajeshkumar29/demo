@@ -26,7 +26,7 @@
             *matHeaderCellDef
             class="w-[120px]">Due on</th>
         <td mat-cell
-            *matCellDef="let element">{{element?.dueDate}}</td>
+            *matCellDef="let element">{{element?.dueDate | date:'mediumDate'}}</td>
     </ng-container>
     <ng-container matColumnDef="options">
         <th mat-header-cell
@@ -39,9 +39,10 @@
                    [routerLink]="['/task/edit', element?.id]">
                     <mat-icon class="text-sm text-blue-500">edit</mat-icon>
                 </a>
-                <a mat-icon-button>
+                <button mat-icon-button
+                        (click)="delete.emit(element.id)">
                     <mat-icon class="text-sm text-red-500">delete</mat-icon>
-                </a>
+                </button>
             </div>
         </td>
     </ng-container>

@@ -7,6 +7,10 @@
 </div>
 <mat-card>
     <mat-card-content>
-        <app-add-task-form></app-add-task-form>
+        <app-add-task-form [isPending]="isPending$ | async"
+                           (submitForm)="addTask($event)"></app-add-task-form>
     </mat-card-content>
+    <mat-card-footer *ngIf="isPending$ | async">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
 </mat-card>

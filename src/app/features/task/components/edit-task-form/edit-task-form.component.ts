@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,17 @@ import { NonNullableFormBuilder, Validators } from '@angular/forms';
   styles: ``
 })
 export class EditTaskFormComponent {
+  @Input() set data(data: any) {
+    console.log(data);
+    if (!data) return;
+    this.form.patchValue(data);
+  }
+  @Input() isPending: boolean | null = null;
+  @Input() error: string | null = null;
+  @Output() submitForm = new EventEmitter();
+
   form = this.fb.group({
+    id: '',
     title: ['', Validators.required],
     description: '',
     status: ['', Validators.required],
@@ -19,5 +29,7 @@ export class EditTaskFormComponent {
   submit() {
     this.form.markAllAsTouched();
     if (this.form.invalid) return;
+
+    this.submitForm.emit(this.form.value);
   }
 }
